@@ -16,6 +16,16 @@
         ElseIf con.State = 0 Then
         Response.Write("Connection failed")
         End if
+        Response.Write("<p>")
+        Set table = con.Execute("SELECT * FROM pls")
+            Do Until table.EOF
+                for each i in table.fields
+                    response.write(i)
+                    response.write(" - ")
+                next
+            table.MoveNext
+            Loop
+        Response.Write("</p>")
     %>
 </body>
 </html>
